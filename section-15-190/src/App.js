@@ -24,6 +24,7 @@ function App() {
       {
         url: "https://dev1-301218-default-rtdb.firebaseio.com/task.json",
       },
+
       transformTasks
     );
   }, [fetchTasks]);

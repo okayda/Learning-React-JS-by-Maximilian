@@ -1,0 +1,33 @@
+[33m63898db[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m Add adjusting the custom hook logic [first-approach] at section-15-190
+[33m5962551[m[33m ([m[1;31morigin/main[m[33m)[m Add using the custom http hook at section-15-190
+[33m1066769[m Add building a custom http hook at section-15-190
+[33m132a412[m Add onwards to a more realistic example at section-15-190
+[33m2e9b432[m Add configuring custom hooks at section-15
+[33m89cff9c[m Add using custom hooks at section-15
+[33mb264857[m Add creating custom react hook function at section-15
+[33mcde579e[m Add sending a Post request
+[33m970cc0a[m Add using useEffect() for requests
+[33m9d1cb64[m Add handling http errors at section-14
+[33m914c71e[m Add handling loading & Data States at section-14
+[33md07922d[m Add useCallBack() and its dependencies
+[33m131b037[m Add preventing unnecessary re-evaluation with React.memo() at section-12
+[33m2f0d8ce[m Add closer look at child component re-evaluation at section-12
+[33ma361927[m Add Component updates in action at section-12
+[33m6980fb2[m Add using the useEffect Hook at section-11
+[33m4dcdeaa[m Add making items removable at section-11
+[33m0694fa2[m Add working on a more complex reducer logic at setion-11
+[33mb8a17c5[m Add outputting cart items at setion-11
+[33mde6afcc[m Add working with refs & forward refs at section-11
+[33m634d941[m Add a cart reducer at section-11
+[33m013a80f[m Add using the context at section-11
+[33m90563ac[m Add Cart Context at section-11
+[33mf138506[m Add Managing Cart & Modal State at section-11
+[33m51e198e[m Add Modal via React Portal at section-11
+[33m37601d0[m Add Shopping Cart Component at section-11
+[33mcc24eba[m Add form at section-11
+[33m0d875f7[m Add Individual Meal Items & Displaying Them at section-11
+[33mf1b358c[m Add Meals Component at section-11
+[33mdecc170[m Add Cart Button Component at section-11
+[33m54e3eca[m Add files changes at section-10 & 11 and Add fixed problem at section-11
+[33m10a2bef[m Add Header Compontent at Section-11
+[33m824f7dd[m initial commit

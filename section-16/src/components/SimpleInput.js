@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useInput from "../hooks/use-input";
 
 const validRegex =
@@ -14,28 +13,23 @@ const SimpleInput = (props) => {
     reset: resetNameInput,
   } = useInput((value) => value.trim() !== "");
 
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
-
-  const enteredEmailIsValid = enteredEmail.match(validRegex);
-  const emailInputIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
+  const {
+    value: enteredEmail,
+    isValid: emailInputIsInvalid,
+    hasError: emailsHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmailInput,
+  } = useInput((value) => value.match(validRegex));
 
   let formIsValid = false;
 
-  if (enteredNameIsValid && enteredEmailIsValid) formIsValid = true;
-
-  const emailChangeHandler = function (e) {
-    setEnteredEmail(e.target.value);
-  };
-
-  const emailBlurHandler = function () {
-    setEnteredEmailTouched(true);
-  };
+  if (enteredNameIsValid && emailInputIsInvalid) formIsValid = true;
 
   const formSubmissionHandler = function (e) {
     e.preventDefault();
 
-    if (!enteredNameIsValid || !enteredEmailIsValid) {
+    if (!enteredNameIsValid || !emailInputIsInvalid) {
       return;
     }
 
@@ -46,16 +40,14 @@ const SimpleInput = (props) => {
     // console.log(enteredValue);
 
     resetNameInput();
-
-    setEnteredEmail("");
-    setEnteredEmailTouched(false);
+    resetEmailInput();
   };
 
   const nameInputClasses = nameInputHasError
     ? "form-control invalid"
     : "form-control";
 
-  const emailInputClasses = emailInputIsInvalid
+  const emailInputClasses = emailsHasError
     ? "form-control invalid"
     : "form-control";
 
@@ -84,7 +76,7 @@ const SimpleInput = (props) => {
           onBlur={emailBlurHandler}
           onChange={emailChangeHandler}
         />
-        {emailInputIsInvalid && (
+        {emailsHasError && (
           <p className="error-text">Email must not be empty</p>
         )}
       </div>

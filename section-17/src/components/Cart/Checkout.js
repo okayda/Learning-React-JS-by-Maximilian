@@ -10,6 +10,13 @@ const Checkout = function (props) {
   const cityObj = useInputs(isEmpty, classes);
   const postalCodeObj = useInputs(istFiveChars, classes);
 
+  const resetInputs = function () {
+    nameObj.reset();
+    streetObj.reset();
+    cityObj.reset();
+    postalCodeObj.reset();
+  };
+
   const confirmHandler = function (e) {
     e.preventDefault();
 
@@ -21,10 +28,14 @@ const Checkout = function (props) {
 
     if (!formIsValid) return;
 
-    nameObj.reset();
-    streetObj.reset();
-    cityObj.reset();
-    postalCodeObj.reset();
+    props.onConfirm({
+      name: nameObj.enteredInput,
+      street: streetObj.enteredInput,
+      city: cityObj.enteredInput,
+      postalCode: postalCodeObj.enteredInput,
+    });
+
+    resetInputs();
   };
 
   return (

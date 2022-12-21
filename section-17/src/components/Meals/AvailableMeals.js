@@ -19,7 +19,6 @@ const AvailableMeals = () => {
       }
 
       const data = await response.json();
-
       setMeals(data);
       setIsLoading(false);
     };

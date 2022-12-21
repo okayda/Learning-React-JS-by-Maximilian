@@ -10,8 +10,8 @@ const Counter = () => {
   // basically whenever the counter data in the store (central data store)
   // is change/updated this component will be automatically re-evaluated
   // and update the U.I
-  const counter = useSelector((state) => state.counter);
-  const show = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const show = useSelector((state) => state.counter.showCounter);
 
   const dispatch = useDispatch();
 

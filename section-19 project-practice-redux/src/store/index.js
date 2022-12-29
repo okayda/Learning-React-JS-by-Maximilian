@@ -1,48 +1,53 @@
-import { createStore } from "redux";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialCart = {
   items: [],
 };
 
-const reducerFunc = function (state = initialCart, action) {
-  if (action.type === "ADD-INCREASE") {
-    let isNotExist = false;
-    let products = state.items.map((item) => {
-      if (item.id === action.payload.id) {
-        isNotExist = true;
-        return {
-          ...item,
-          quantity: (item.quantity += 1),
-        };
+const cartSlice = createSlice({
+  name: "cart",
+  initialState: initialCart,
+
+  reducers: {
+    addIncrease(state, action) {
+      let targetProduct;
+
+      state.items.forEach((item, i) => {
+        if (item.id === action.payload.id) targetProduct = i;
+      });
+
+      if (!targetProduct && targetProduct !== 0) {
+        state.items.push({ ...action.payload });
+        return;
       }
 
-      return item;
-    });
+      const product = state.items[targetProduct];
+      product.quantity = product.quantity += 1;
+    },
 
-    return !isNotExist
-      ? { items: products.concat({ ...action.payload }) }
-      : { items: products };
-  }
+    decrease(state, action) {
+      let targetProduct;
 
-  if (action.type === "DECREASE") {
-    const updateProduct = state.items
-      .map((item) => {
-        if (item.id === action.payload.id && item.quantity - 1 >= 1) {
-          console.log("Decrease", item.quantity - 1);
+      state.items.forEach((item, i) => {
+        if (item.id === action.payload.id) targetProduct = i;
+      });
 
-          return { ...item, quantity: (item.quantity -= 1) };
-        }
-      })
-      .filter((item) => item !== undefined);
+      const porduct = state.items[targetProduct];
 
-    return {
-      items: updateProduct || [],
-    };
-  }
+      if (porduct.quantity - 1 >= 1) {
+        porduct.quantity -= 1;
+        return;
+      }
 
-  return state;
-};
+      state.items = [];
+    },
+  },
+});
 
-const store = createStore(reducerFunc);
+const store = configureStore({
+  reducer: cartSlice,
+});
 
 export default store;
+
+export const cartActions = cartSlice.actions;

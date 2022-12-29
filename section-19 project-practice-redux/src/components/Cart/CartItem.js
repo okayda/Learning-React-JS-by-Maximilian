@@ -1,4 +1,5 @@
 import classes from "./CartItem.module.css";
+import { cartActions } from "../../store";
 
 const CartItem = (props) => {
   const { title, quantity, total, price } = props.item;
@@ -6,11 +7,11 @@ const CartItem = (props) => {
   const id = "SAL123";
 
   const increaseQuantity = function () {
-    props.dispatch({ type: "ADD-INCREASE", payload: { id: id } });
+    props.dispatch(cartActions.addIncrease({ id: id }));
   };
 
   const decreaseQuantity = function () {
-    props.dispatch({ type: "DECREASE", payload: { id: id } });
+    props.dispatch(cartActions.decrease({ id: id }));
   };
 
   return (

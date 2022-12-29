@@ -4,10 +4,8 @@ import CartItem from "./CartItem";
 import { useSelector, useDispatch } from "react-redux";
 
 const Cart = (props) => {
-  const products = useSelector((state) => state.items);
+  const products = useSelector((state) => state.reducer.items);
   const dispatch = useDispatch();
-
-  console.log(products);
 
   return (
     <Card className={classes.cart}>

@@ -1,14 +1,14 @@
 import Card from "../UI/Card";
 import classes from "./ProductItem.module.css";
+import { cartActions } from "../../store";
 
 const ProductItem = (props) => {
   const { id, title, price, description, quantity } = props;
 
   const addProduct = function () {
-    props.dispatch({
-      type: "ADD-INCREASE",
-      payload: { id, title, price, description, quantity },
-    });
+    props.dispatch(
+      cartActions.addIncrease({ id, title, price, description, quantity })
+    );
   };
 
   return (

@@ -29,4 +29,6 @@ const store = configureStore({
   reducer: { counter: counterReducer, auth: authSliceReducer },
 });
 
+console.log(store.getState());
+
 export default store;

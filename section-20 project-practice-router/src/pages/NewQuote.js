@@ -6,8 +6,6 @@ const NewQuote = function () {
   const history = useHistory();
 
   const addQuoteHandler = function (quoteData) {
-    console.log(quoteData);
-
     history.push("/quotes");
   };
 
